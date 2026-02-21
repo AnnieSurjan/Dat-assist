@@ -35,8 +35,7 @@ export default function App() {
     Smartphone
   };
 
-  // Using the provided logo description for the placeholder
-  const logoUrl = "https://picsum.photos/seed/datassist-tech-logo/400/400";
+  const logoUrl = "/logo.svg";
 
   return (
     <div className="min-h-screen bg-brand-dark selection:bg-brand-blue/30">
@@ -45,11 +44,10 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 flex items-center justify-center overflow-hidden rounded-xl bg-white/5 border border-white/10">
-              <img 
-                src={logoUrl} 
-                alt="Dat-assist Logo" 
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
+              <img
+                src={logoUrl}
+                alt="Dat-assist Logo"
+                className="w-full h-full object-contain"
               />
             </div>
             <span className="text-2xl font-bold tracking-tighter text-white">
@@ -304,11 +302,10 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-2">
             <div className="w-10 h-10 flex items-center justify-center overflow-hidden rounded bg-white/5">
-              <img 
-                src={logoUrl} 
-                alt="Dat-assist Logo" 
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
+              <img
+                src={logoUrl}
+                alt="Dat-assist Logo"
+                className="w-full h-full object-contain"
               />
             </div>
             <span className="font-bold text-white">Dat-assist</span>
