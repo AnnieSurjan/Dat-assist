@@ -35,6 +35,9 @@ export interface Content {
     email: string;
     message: string;
     send: string;
+    sending: string;
+    success: string;
+    error: string;
   };
 }
 
@@ -91,6 +94,9 @@ export const translations: Record<Language, Content> = {
       email: 'E-mail',
       message: 'Üzenet',
       send: 'Küldés',
+      sending: 'Küldés...',
+      success: 'Üzenet sikeresen elküldve! Hamarosan felvesszük Önnel a kapcsolatot.',
+      error: 'Hiba történt az üzenet küldésekor. Kérjük, próbálja újra.',
     },
   },
   en: {
@@ -145,6 +151,9 @@ export const translations: Record<Language, Content> = {
       email: 'Email',
       message: 'Message',
       send: 'Send',
+      sending: 'Sending...',
+      success: 'Message sent successfully! We will get back to you soon.',
+      error: 'Something went wrong. Please try again.',
     },
   },
 };

@@ -1,16 +1,19 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  Globe, 
-  Layout, 
-  Smartphone, 
-  Mail, 
-  ChevronRight, 
-  Menu, 
-  X, 
-  Code2, 
-  Database, 
-  Cpu
+import {
+  Globe,
+  Layout,
+  Smartphone,
+  Mail,
+  ChevronRight,
+  Menu,
+  X,
+  Code2,
+  Database,
+  Cpu,
+  CheckCircle,
+  AlertCircle,
+  Loader2
 } from 'lucide-react';
 import { translations, Language } from './translations';
 
@@ -18,6 +21,7 @@ export default function App() {
   const [lang, setLang] = useState<Language>('hu');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   const t = translations[lang];
 
@@ -275,23 +279,64 @@ export default function App() {
             <p className="text-slate-400">Ready to start your project? Let's talk.</p>
           </div>
 
-          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+          <form
+            className="space-y-6"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              setFormStatus('sending');
+              const form = e.currentTarget;
+              try {
+                const res = await fetch('https://formspree.io/f/mojnklob', {
+                  method: 'POST',
+                  body: new FormData(form),
+                  headers: { Accept: 'application/json' },
+                });
+                if (res.ok) {
+                  setFormStatus('success');
+                  form.reset();
+                } else {
+                  setFormStatus('error');
+                }
+              } catch {
+                setFormStatus('error');
+              }
+            }}
+          >
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-widest text-slate-500">{t.contact.name}</label>
-                <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-blue transition-all" />
+                <input name="name" type="text" required className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-blue transition-all" />
               </div>
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-widest text-slate-500">{t.contact.email}</label>
-                <input type="email" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-blue transition-all" />
+                <input name="email" type="email" required className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-blue transition-all" />
               </div>
             </div>
             <div className="space-y-2">
               <label className="text-xs font-bold uppercase tracking-widest text-slate-500">{t.contact.message}</label>
-              <textarea rows={5} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-blue transition-all resize-none"></textarea>
+              <textarea name="message" rows={5} required className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-blue transition-all resize-none"></textarea>
             </div>
-            <button className="w-full py-4 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold rounded-xl transition-all shadow-lg shadow-brand-blue/25">
-              {t.contact.send}
+
+            {formStatus === 'success' && (
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400">
+                <CheckCircle className="w-5 h-5 shrink-0" />
+                <span className="text-sm font-medium">{t.contact.success}</span>
+              </div>
+            )}
+            {formStatus === 'error' && (
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400">
+                <AlertCircle className="w-5 h-5 shrink-0" />
+                <span className="text-sm font-medium">{t.contact.error}</span>
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={formStatus === 'sending'}
+              className="w-full py-4 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold rounded-xl transition-all shadow-lg shadow-brand-blue/25 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            >
+              {formStatus === 'sending' && <Loader2 className="w-5 h-5 animate-spin" />}
+              {formStatus === 'sending' ? t.contact.sending : t.contact.send}
             </button>
           </form>
         </div>
