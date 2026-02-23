@@ -5,17 +5,22 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   --color-brand-blue: #00A3FF;
-  --color-brand-dark: #0A0F16;
+  --color-brand-dark: #334155;
 }
 
 @layer base {
   body {
-    @apply bg-brand-dark text-slate-200 font-sans antialiased;
+    @apply bg-brand-dark text-slate-100 font-sans antialiased relative;
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-attachment: fixed;
   }
 }
 
 .glass {
-  @apply bg-white/5 backdrop-blur-lg border border-white/10;
+  @apply bg-slate-800/40 backdrop-blur-xl border border-white/10 shadow-xl;
 }
 
 .text-gradient {
