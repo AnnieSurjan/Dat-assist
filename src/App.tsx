@@ -43,28 +43,28 @@ export default function App() {
   ];
 
   const portfolioImages = [
-    { 
-      src: 'https://images.unsplash.com/photo-1551288049-bbdac8626ad1?auto=format&fit=crop&w=800&q=80', 
+    {
+      src: '/dup-detect.png',
       title: 'Dup-Detect',
       desc: lang === 'hu' ? 'Automatizált duplikáció szűrés QuickBooks és Xero rendszerekhez.' : 'Automated deduplication for QuickBooks and Xero.'
     },
-    { 
-      src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80', 
+    {
+      src: '/fraudradar.png',
       title: 'FraudRadar',
       desc: lang === 'hu' ? 'AI-alapú pénzügyi felügyeleti eszköz KKV-k számára.' : 'AI-powered financial surveillance tool for SMEs.'
     },
-    { 
-      src: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80', 
+    {
+      src: '/subradar.png',
       title: 'SubRadar',
       desc: lang === 'hu' ? 'Előfizetés-intelligencia és költségfigyelő rendszer.' : 'Subscription intelligence and cost monitoring system.'
     },
-    { 
-      src: 'https://images.unsplash.com/photo-1504868584819-f8e905263543?auto=format&fit=crop&w=800&q=80', 
+    {
+      src: '/closecoach.png',
       title: 'CloseCoach',
       desc: lang === 'hu' ? 'Hónap végi zárási folyamatok automatizálása és ellenőrzése.' : 'Month-end closing process automation and verification.'
     },
-    { 
-      src: 'https://images.unsplash.com/photo-1454165833767-02a698d48767?auto=format&fit=crop&w=800&q=80', 
+    {
+      src: '/zenith-crm.png',
       title: 'Zenith CRM',
       desc: lang === 'hu' ? 'Komplex ügyfélkezelő platform és üzleti dashboard.' : 'Complex customer management platform and business dashboard.'
     }
