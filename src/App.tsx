@@ -39,7 +39,7 @@ export default function App() {
     'https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=1200&q=80', // Monitor
     'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80', // Code
     'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80', // Team/Dev
-    'https://images.unsplash.com/photo-1558494949-ef010cbdcc48?auto=format&fit=crop&w=1200&q=80'  // Server/Data
+    'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80'  // Finance/Trading mobile
   ];
 
   const portfolioImages = [
@@ -67,6 +67,11 @@ export default function App() {
       src: '/zenith-crm.png',
       title: 'Zenith CRM',
       desc: lang === 'hu' ? 'Komplex ügyfélkezelő platform és üzleti dashboard.' : 'Complex customer management platform and business dashboard.'
+    },
+    {
+      src: '/identifi.png',
+      title: 'Identifi',
+      desc: lang === 'hu' ? 'Intelligens azonosítás-kezelő és verifikációs platform.' : 'Intelligent identity management and verification platform.'
     }
   ];
 
