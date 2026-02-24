@@ -39,34 +39,39 @@ export default function App() {
     'https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=1200&q=80', // Monitor
     'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80', // Code
     'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80', // Team/Dev
-    'https://images.unsplash.com/photo-1558494949-ef010cbdcc48?auto=format&fit=crop&w=1200&q=80'  // Server/Data
+    'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80'  // Finance/Trading mobile
   ];
 
   const portfolioImages = [
-    { 
-      src: 'https://images.unsplash.com/photo-1551288049-bbdac8626ad1?auto=format&fit=crop&w=800&q=80', 
+    {
+      src: '/dup-detect.png',
       title: 'Dup-Detect',
       desc: lang === 'hu' ? 'Automatizált duplikáció szűrés QuickBooks és Xero rendszerekhez.' : 'Automated deduplication for QuickBooks and Xero.'
     },
-    { 
-      src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80', 
+    {
+      src: '/fraudradar.png',
       title: 'FraudRadar',
       desc: lang === 'hu' ? 'AI-alapú pénzügyi felügyeleti eszköz KKV-k számára.' : 'AI-powered financial surveillance tool for SMEs.'
     },
-    { 
-      src: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80', 
+    {
+      src: '/subradar.png',
       title: 'SubRadar',
       desc: lang === 'hu' ? 'Előfizetés-intelligencia és költségfigyelő rendszer.' : 'Subscription intelligence and cost monitoring system.'
     },
-    { 
-      src: 'https://images.unsplash.com/photo-1504868584819-f8e905263543?auto=format&fit=crop&w=800&q=80', 
+    {
+      src: '/closecoach.png',
       title: 'CloseCoach',
       desc: lang === 'hu' ? 'Hónap végi zárási folyamatok automatizálása és ellenőrzése.' : 'Month-end closing process automation and verification.'
     },
-    { 
-      src: 'https://images.unsplash.com/photo-1454165833767-02a698d48767?auto=format&fit=crop&w=800&q=80', 
+    {
+      src: '/zenith-crm.png',
       title: 'Zenith CRM',
       desc: lang === 'hu' ? 'Komplex ügyfélkezelő platform és üzleti dashboard.' : 'Complex customer management platform and business dashboard.'
+    },
+    {
+      src: '/identifi.png',
+      title: 'Identifi',
+      desc: lang === 'hu' ? 'Törzsadatok tisztítása és duplikációk felderítése szállítói és vevői adatbázisokban.' : 'Master data cleanup and duplicate detection across vendor and customer records.'
     }
   ];
 
@@ -96,8 +101,7 @@ export default function App() {
     Code2
   };
 
-  // Using the provided logo description for the placeholder
-  const logoUrl = "https://picsum.photos/seed/datassist-tech-logo/400/400";
+  const logoUrl = "/logo.svg";
 
   return (
     <div className="min-h-screen bg-brand-dark selection:bg-brand-blue/30">
