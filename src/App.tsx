@@ -71,7 +71,7 @@ export default function App() {
     {
       src: '/identifi.png',
       title: 'Identifi',
-      desc: lang === 'hu' ? 'Intelligens azonosítás-kezelő és verifikációs platform.' : 'Intelligent identity management and verification platform.'
+      desc: lang === 'hu' ? 'Törzsadatok tisztítása és duplikációk felderítése szállítói és vevői adatbázisokban.' : 'Master data cleanup and duplicate detection across vendor and customer records.'
     }
   ];
 
