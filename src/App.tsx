@@ -96,8 +96,7 @@ export default function App() {
     Code2
   };
 
-  // Using the provided logo description for the placeholder
-  const logoUrl = "https://picsum.photos/seed/datassist-tech-logo/400/400";
+  const logoUrl = "/logo.svg";
 
   return (
     <div className="min-h-screen bg-brand-dark selection:bg-brand-blue/30">
