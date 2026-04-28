@@ -29,7 +29,7 @@ $systemMap   = ['yes' => 'Yes, has existing system', 'no' => 'No, new system nee
 $to      = 'info@dat-assist.com';
 $subject = "New Quote Request from $name";
 $body    = "Name: $name\nEmail: $email\nPlatform: {$platformMap[$platform]}\nExisting System: {$systemMap[$system]}";
-$headers = "From: noreply@dat-assist.com\r\nReply-To: $email\r\nX-Mailer: PHP/" . phpversion();
+$headers = "From: info@dat-assist.com\r\nReply-To: $email\r\nX-Mailer: PHP/" . phpversion();
 
 if (mail($to, $subject, $body, $headers)) {
     echo json_encode(['success' => true]);
