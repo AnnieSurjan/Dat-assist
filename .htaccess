@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteBase /
+
+# Serve existing files/directories directly (node_modules, src, etc. - should not be accessed)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Serve from dist/ if the file exists there
+RewriteCond %{DOCUMENT_ROOT}/dist%{REQUEST_URI} -f
+RewriteRule ^(.*)$ dist/$1 [L]
+
+# SPA fallback: all other routes serve dist/index.html
+RewriteRule ^ dist/index.html [L]
