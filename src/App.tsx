@@ -20,7 +20,7 @@ import {
 import { translations, Language } from './translations';
 
 export default function App() {
-  const [lang, setLang] = useState<Language>('hu');
+  const [lang, setLang] = useState<Language>('en');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -34,6 +34,23 @@ export default function App() {
     email: ''
   });
   const [expandedPortfolio, setExpandedPortfolio] = useState<number | null>(null);
+  const [submitState, setSubmitState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleQuoteSubmit = async () => {
+    if (!quoteData.name || !quoteData.email) return;
+    setSubmitState('loading');
+    try {
+      const res = await fetch('/send-quote.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(quoteData),
+      });
+      const data = await res.json();
+      setSubmitState(data.success ? 'success' : 'error');
+    } catch {
+      setSubmitState('error');
+    }
+  };
   const heroImages = [
     'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80', // Laptop
     'https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=1200&q=80', // Monitor
@@ -716,15 +733,28 @@ export default function App() {
                     <ArrowRight className="w-5 h-5" />
                   </button>
                 ) : (
-                  <button 
+                  <button
                     type="button"
-                    className="px-8 py-4 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold rounded-2xl transition-all flex items-center gap-2"
+                    onClick={handleQuoteSubmit}
+                    disabled={submitState === 'loading' || !quoteData.name || !quoteData.email}
+                    className="px-8 py-4 bg-brand-blue hover:bg-brand-blue/90 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-2xl transition-all flex items-center gap-2"
                   >
                     <Mail className="w-5 h-5" />
-                    {t.quote.submit}
+                    {submitState === 'loading' ? '...' : t.quote.submit}
                   </button>
                 )}
               </div>
+
+              {submitState === 'success' && (
+                <div className="mt-6 p-4 rounded-2xl bg-green-500/10 border border-green-500/30 text-green-400 text-center font-bold">
+                  {lang === 'hu' ? 'Köszönjük! Hamarosan felvesszük Önnel a kapcsolatot.' : 'Thank you! We will get back to you soon.'}
+                </div>
+              )}
+              {submitState === 'error' && (
+                <div className="mt-6 p-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-400 text-center font-bold">
+                  {lang === 'hu' ? 'Hiba történt. Kérjük, írjon nekünk: info@dat-assist.com' : 'Something went wrong. Please email us: info@dat-assist.com'}
+                </div>
+              )}
             </form>
           </div>
         </div>
