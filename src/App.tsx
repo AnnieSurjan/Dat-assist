@@ -20,7 +20,7 @@ import {
 import { translations, Language } from './translations';
 
 export default function App() {
-  const [lang, setLang] = useState<Language>('hu');
+  const [lang, setLang] = useState<Language>('en');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
