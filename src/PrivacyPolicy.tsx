@@ -41,7 +41,7 @@ function HuContent() {
       <p className="text-slate-500 text-xs">Utolsó frissítés: 2026. január 1.</p>
 
       <h3 className="text-white font-bold">1. Adatkezelő</h3>
-      <p>Dat-assist Kft. | Email: info@dat-assist.com | Tel: +1 (415) 854-8618</p>
+      <p>Dat-assist Kft. | Email: info [at] dat-assist.com | Tel: +1 (415) 854-8618</p>
 
       <h3 className="text-white font-bold">2. Gyűjtött adatok</h3>
       <p>Az alábbi személyes adatokat kezeljük:</p>
@@ -89,7 +89,7 @@ function EnContent() {
       <p className="text-slate-500 text-xs">Last updated: January 1, 2026</p>
 
       <h3 className="text-white font-bold">1. Data Controller</h3>
-      <p>Dat-assist LLC | Email: info@dat-assist.com | Phone: +1 (415) 854-8618</p>
+      <p>Dat-assist LLC | Email: info [at] dat-assist.com | Phone: +1 (415) 854-8618</p>
 
       <h3 className="text-white font-bold">2. Data We Collect</h3>
       <ul className="list-disc list-inside space-y-1 text-slate-400">
