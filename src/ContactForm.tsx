@@ -48,13 +48,17 @@ export default function ContactForm({ lang }: { lang: 'hu' | 'en' }) {
 
   useEffect(() => {
     const renderWidget = () => {
-      if (!captchaRef.current || widgetId.current !== null) return;
+      if (!captchaRef.current) return;
+      captchaRef.current.innerHTML = '';
+      widgetId.current = null;
       widgetId.current = window.grecaptcha.render(captchaRef.current, {
         sitekey: RECAPTCHA_SITE_KEY,
         callback: (token: string) => setCaptchaToken(token),
         'expired-callback': () => setCaptchaToken(null),
         theme: 'dark',
+        hl: lang,
       });
+      setCaptchaToken(null);
     };
 
     if (window.grecaptcha?.render) {
@@ -72,7 +76,7 @@ export default function ContactForm({ lang }: { lang: 'hu' | 'en' }) {
       script.defer = true;
       document.head.appendChild(script);
     }
-  }, []);
+  }, [lang]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
