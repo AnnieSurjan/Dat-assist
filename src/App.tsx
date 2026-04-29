@@ -20,6 +20,7 @@ import {
 import { translations, Language } from './translations';
 import CookieBanner from './CookieBanner';
 import ContactForm from './ContactForm';
+import PrivacyPolicy from './PrivacyPolicy';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
@@ -37,6 +38,7 @@ export default function App() {
   });
   const [expandedPortfolio, setExpandedPortfolio] = useState<number | null>(null);
   const [submitState, setSubmitState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [privacyOpen, setPrivacyOpen] = useState(false);
 
   const handleQuoteSubmit = async () => {
     if (!quoteData.name || !quoteData.email) return;
@@ -125,6 +127,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-brand-dark selection:bg-brand-blue/30">
       <CookieBanner lang={lang} />
+      <PrivacyPolicy open={privacyOpen} onClose={() => setPrivacyOpen(false)} lang={lang} />
       {/* Navigation */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
@@ -771,23 +774,41 @@ export default function App() {
       {/* Footer */}
       <footer className="py-12 border-t border-white/5 bg-brand-dark">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 flex items-center justify-center overflow-hidden rounded-lg bg-white/5 border border-white/10">
-                <img src={logoUrl} alt="Logo" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            {/* Brand */}
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 flex items-center justify-center overflow-hidden rounded-lg bg-white/5 border border-white/10">
+                  <img src={logoUrl} alt="Logo" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                </div>
+                <span className="font-bold text-xl text-white">Dat-assist</span>
               </div>
-              <span className="font-bold text-xl text-white">Dat-assist</span>
-            </div>
-            
-            <div className="flex gap-8 text-sm text-slate-500">
-              <a href="#services" className="hover:text-brand-blue transition-colors">{t.nav.services}</a>
-              <a href="#portfolio" className="hover:text-brand-blue transition-colors">{lang === 'hu' ? 'Referenciák' : 'Portfolio'}</a>
-              <a href="#about" className="hover:text-brand-blue transition-colors">{t.nav.about}</a>
+              <p className="text-sm text-slate-500 leading-relaxed">
+                {lang === 'hu' ? 'Egyedi szoftverfejlesztés vállalkozásoknak.' : 'Custom software development for businesses.'}
+              </p>
             </div>
 
-            <div className="text-sm text-slate-500">
-              © {new Date().getFullYear()} Dat-assist {lang === 'hu' ? 'Kft.' : 'LLC'}. All rights reserved.
+            {/* Nav */}
+            <div className="flex flex-col gap-3">
+              <span className="text-xs font-bold uppercase tracking-widest text-slate-600">{lang === 'hu' ? 'Navigáció' : 'Navigation'}</span>
+              <a href="#services" className="text-sm text-slate-500 hover:text-brand-blue transition-colors">{t.nav.services}</a>
+              <a href="#portfolio" className="text-sm text-slate-500 hover:text-brand-blue transition-colors">{lang === 'hu' ? 'Referenciák' : 'Portfolio'}</a>
+              <a href="#about" className="text-sm text-slate-500 hover:text-brand-blue transition-colors">{t.nav.about}</a>
+              <button onClick={() => setPrivacyOpen(true)} className="text-sm text-slate-500 hover:text-brand-blue transition-colors text-left">
+                {lang === 'hu' ? 'Adatvédelmi nyilatkozat' : 'Privacy Policy'}
+              </button>
             </div>
+
+            {/* Contact */}
+            <div className="flex flex-col gap-3">
+              <span className="text-xs font-bold uppercase tracking-widest text-slate-600">{lang === 'hu' ? 'Elérhetőség' : 'Contact'}</span>
+              <a href="mailto:info@dat-assist.com" className="text-sm text-slate-500 hover:text-brand-blue transition-colors">info@dat-assist.com</a>
+              <a href="tel:+14158548618" className="text-sm text-slate-500 hover:text-brand-blue transition-colors">+1 (415) 854-8618</a>
+            </div>
+          </div>
+
+          <div className="border-t border-white/5 pt-6 text-center text-sm text-slate-600">
+            © {new Date().getFullYear()} Dat-assist {lang === 'hu' ? 'Kft.' : 'LLC'}. All rights reserved.
           </div>
         </div>
       </footer>
