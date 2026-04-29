@@ -802,7 +802,7 @@ export default function App() {
             {/* Contact */}
             <div className="flex flex-col gap-3">
               <span className="text-xs font-bold uppercase tracking-widest text-slate-600">{lang === 'hu' ? 'Elérhetőség' : 'Contact'}</span>
-              <a href="mailto:info@dat-assist.com" className="text-sm text-slate-500 hover:text-brand-blue transition-colors">info@dat-assist.com</a>
+              <span className="text-sm text-slate-500 select-all">info [at] dat-assist.com</span>
               <a href="tel:+14158548618" className="text-sm text-slate-500 hover:text-brand-blue transition-colors">+1 (415) 854-8618</a>
             </div>
           </div>

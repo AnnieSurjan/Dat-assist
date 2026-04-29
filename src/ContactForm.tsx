@@ -48,23 +48,14 @@ export default function ContactForm({ lang }: { lang: 'hu' | 'en' }) {
 
   useEffect(() => {
     const renderWidget = () => {
-      if (!captchaRef.current) return;
-      captchaRef.current.innerHTML = '';
-      widgetId.current = null;
+      if (!captchaRef.current || widgetId.current !== null) return;
       widgetId.current = window.grecaptcha.render(captchaRef.current, {
         sitekey: RECAPTCHA_SITE_KEY,
         callback: (token: string) => setCaptchaToken(token),
         'expired-callback': () => setCaptchaToken(null),
         theme: 'dark',
-        hl: lang,
       });
-      setCaptchaToken(null);
     };
-
-    if (window.grecaptcha?.render) {
-      renderWidget();
-      return;
-    }
 
     window.onRecaptchaLoad = renderWidget;
 
@@ -75,7 +66,17 @@ export default function ContactForm({ lang }: { lang: 'hu' | 'en' }) {
       script.async = true;
       script.defer = true;
       document.head.appendChild(script);
+    } else if (window.grecaptcha?.render) {
+      renderWidget();
     }
+  }, []);
+
+  // On language change just reset the token – re-rendering the widget crashes React
+  useEffect(() => {
+    if (widgetId.current !== null && window.grecaptcha) {
+      window.grecaptcha.reset(widgetId.current);
+    }
+    setCaptchaToken(null);
   }, [lang]);
 
   const handleSubmit = async (e: React.FormEvent) => {
