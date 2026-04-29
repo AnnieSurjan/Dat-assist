@@ -95,7 +95,7 @@ export const translations: Record<Language, Content> = {
     },
     hero: {
       title: 'Egyedi szoftvermegoldások az Ön igényeire szabva',
-      subtitle: 'A Dat-assist Kft. segít megvalósítani elképzeléseit, legyen szó weboldalról, webalkalmazásról vagy mobil applikációról.',
+      subtitle: 'A Dat-assist Kft. segít megvalósítani elképzeléseit, legyen szó weboldalról, webalkalmazásról vagy mobil applikációról — különös szaktudással pénzügyi, könyvelési és vállalatirányítási megoldások terén.',
       cta: 'Kérjen ajánlatot',
     },
     services: {
@@ -222,7 +222,7 @@ export const translations: Record<Language, Content> = {
     },
     hero: {
       title: 'Custom Software Solutions Tailored to Your Needs',
-      subtitle: 'Dat-assist LLC helps you realize your ideas, whether it is a website, web application, or mobile app.',
+      subtitle: 'Dat-assist LLC helps you realize your ideas, whether it is a website, web application, or mobile app — with a specialization in finance, accounting, and business management solutions.',
       cta: 'Get a Quote',
     },
     services: {
