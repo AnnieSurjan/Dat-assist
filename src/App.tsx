@@ -21,6 +21,8 @@ import { translations, Language } from './translations';
 import CookieBanner from './CookieBanner';
 import ContactForm from './ContactForm';
 import PrivacyPolicy from './PrivacyPolicy';
+import WhatsAppButton from './WhatsAppButton';
+import CountUp from './CountUp';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
@@ -128,6 +130,7 @@ export default function App() {
     <div className="min-h-screen bg-brand-dark selection:bg-brand-blue/30">
       <CookieBanner lang={lang} />
       <PrivacyPolicy open={privacyOpen} onClose={() => setPrivacyOpen(false)} lang={lang} />
+      <WhatsAppButton />
       {/* Navigation */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
@@ -543,15 +546,15 @@ export default function App() {
             {/* Stats Row */}
             <div className="grid grid-cols-3 gap-4 mb-10">
               <div className="text-center p-4 glass rounded-2xl">
-                <div className="text-2xl font-bold text-brand-blue">50+</div>
+                <div className="text-2xl font-bold text-brand-blue"><CountUp target={50} suffix="+" /></div>
                 <div className="text-[10px] uppercase tracking-widest opacity-60">{lang === 'hu' ? 'Projekt' : 'Projects'}</div>
               </div>
               <div className="text-center p-4 glass rounded-2xl">
-                <div className="text-2xl font-bold text-brand-blue">10+</div>
+                <div className="text-2xl font-bold text-brand-blue"><CountUp target={10} suffix="+" /></div>
                 <div className="text-[10px] uppercase tracking-widest opacity-60">{lang === 'hu' ? 'Év tapasztalat' : 'Years Exp'}</div>
               </div>
               <div className="text-center p-4 glass rounded-2xl">
-                <div className="text-2xl font-bold text-brand-blue">100%</div>
+                <div className="text-2xl font-bold text-brand-blue"><CountUp target={100} suffix="%" /></div>
                 <div className="text-[10px] uppercase tracking-widest opacity-60">{lang === 'hu' ? 'Siker' : 'Success'}</div>
               </div>
             </div>
