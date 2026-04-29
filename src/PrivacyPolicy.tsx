@@ -71,7 +71,7 @@ function HuContent() {
         <li>Helyesbítés joga: kérheti a hibás adatok javítását</li>
         <li>Tiltakozás joga: tiltakozhat az adatkezelés ellen</li>
       </ul>
-      <p>Kérelmét az <a href="mailto:info@dat-assist.com" className="text-brand-blue hover:underline">info@dat-assist.com</a> címre küldheti.</p>
+      <p>Kérelmét az <span className="text-brand-blue select-all">info [at] dat-assist.com</span> címre küldheti.</p>
 
       <h3 className="text-white font-bold">7. Harmadik felek</h3>
       <p>Google Analytics (Google LLC) – adatvédelmi tájékoztató: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-brand-blue hover:underline">policies.google.com/privacy</a></p>
@@ -118,7 +118,7 @@ function EnContent() {
         <li>Right to rectification: request correction of inaccurate data</li>
         <li>Right to object: object to the processing of your data</li>
       </ul>
-      <p>Send your request to <a href="mailto:info@dat-assist.com" className="text-brand-blue hover:underline">info@dat-assist.com</a>.</p>
+      <p>Send your request to <span className="text-brand-blue select-all">info [at] dat-assist.com</span>.</p>
 
       <h3 className="text-white font-bold">7. Third Parties</h3>
       <p>Google Analytics (Google LLC) – privacy policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-brand-blue hover:underline">policies.google.com/privacy</a></p>
