@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { translations, Language } from './translations';
 import CookieBanner from './CookieBanner';
+import ContactForm from './ContactForm';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
@@ -602,6 +603,8 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      <ContactForm lang={lang} />
 
       {/* Contact Section */}
       <section id="contact" className="py-24 relative overflow-hidden">
