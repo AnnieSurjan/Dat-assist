@@ -18,6 +18,7 @@ import {
   Check
 } from 'lucide-react';
 import { translations, Language } from './translations';
+import CookieBanner from './CookieBanner';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
@@ -122,6 +123,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-brand-dark selection:bg-brand-blue/30">
+      <CookieBanner lang={lang} />
       {/* Navigation */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
